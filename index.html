@@ -1,0 +1,216 @@
+<!-- index.html - Versi Terbaru dengan Menu Lengkap, Avatar, Responsif & Dark Mode Toggle -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Belajar logika JavaScript interaktif dengan latihan praktis, simulasi, dan kuis.">
+  <meta name="author" content="DEV-MTC & DEV-AI">
+  <meta property="og:title" content="Belajar Logika JavaScript Interaktif">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/logo.png">
+  <title>Belajar Logika JavaScript Interaktif</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-color: white;
+      color: black;
+      transition: background-color 0.3s, color 0.3s;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    body.dark {
+      background-color: #121212;
+      color: #f1f1f1;
+    }
+    .avatar {
+      width: 100px;
+      border-radius: 50%;
+      margin: 1rem auto;
+      display: block;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .accordion {
+      margin-top: 1rem;
+    }
+    .accordion-item {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease-in-out;
+    }
+    .accordion-header {
+      background-color: #007acc;
+      color: white;
+      padding: 1rem;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    .accordion-header:hover {
+      background-color: #005fa3;
+    }
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      padding: 0 1rem;
+      background: #f1f1f1;
+    }
+    .accordion-item.active .accordion-body {
+      max-height: 500px;
+      padding: 1rem;
+    }
+    footer {
+      background: linear-gradient(45deg, #007acc, #005f99);
+      color: white;
+      padding: 1rem;
+      border-radius: 12px;
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .dark .accordion-header {
+      background-color: #444;
+    }
+    .dark .accordion-header:hover {
+      background-color: #333;
+    }
+    .dark .accordion-body {
+      background: #1e1e1e;
+    }
+    .dark footer {
+      background: linear-gradient(45deg, #333, #222);
+    }
+    .toggle-mode {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: #007acc;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: background-color 0.3s;
+    }
+    .toggle-mode:hover {
+      background-color: #005fa3;
+    }
+    .dark .toggle-mode {
+      background: #666;
+    }
+    .dark .toggle-mode:hover {
+      background: #555;
+    }
+    pre {
+      background-color: #eee;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    .dark pre {
+      background-color: #1e1e1e;
+      color: #f1f1f1;
+    }
+    ul.nav-list li a {
+      text-decoration: none;
+      display: inline-block;
+      padding: 0.5rem;
+      transition: background-color 0.2s, transform 0.2s;
+      border-radius: 4px;
+      color: inherit;
+    }
+    ul.nav-list li a:hover {
+      background-color: rgba(0, 122, 204, 0.1);
+      transform: translateX(5px);
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle-mode" onclick="toggleMode()">🌙 Dark Mode</button>
+  <header>
+    <img src="assets/avatar.png" alt="Avatar Developer" class="avatar" />
+    <h1>📘 Belajar Logika JavaScript Interaktif</h1>
+    <p class="subtitle">Disusun oleh <strong>DEV-MTC</strong> & <strong>DEV-AI (powered by ChatGPT)</strong></p>
+  </header>
+
+  <main>
+    <section class="accordion">
+      <div class="accordion-item">
+        <div class="accordion-header">📚 Daftar Materi Interaktif</div>
+        <div class="accordion-body">
+          <ul class="nav-list">
+            <li><a href="latihan1.html">🔢 Penjumlahan & String</a></li>
+            <li><a href="latihan2.html">➖➗ Operasi Matematika (− × ÷)</a></li>
+            <li><a href="latihan3.html">🔍 Logika Perbandingan (==, ===, >, <)</a></li>
+            <li><a href="latihan4.html">🧠 Logika Kondisi & Boolean (if, else, &&, ||)</a></li>
+            <li><a href="latihan5.html">🧪 Mini Quiz Interaktif</a></li>
+            <li><a href="latihan6.html">🛒 Simulasi: Perbandingan Harga</a></li>
+            <li><a href="latihan7.html">🏃‍♂️ Simulasi: Cek Umur Lomba</a></li>
+            <li><a href="latihan8.html">🔐 Simulasi: Login Sederhana</a></li>
+            <li><a href="latihan9.html">🎲 Game: Angka Acak</a></li>
+            <li><a href="latihan10.html">🧮 Kalkulator Mini</a></li>
+            <li><a href="latihan11.html">⏱️ Timer Interaktif</a></li>
+            <li><a href="latihan12.html">🎯 Tebak Angka (Random)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">🔰 Pengantar</div>
+        <div class="accordion-body">
+          <p>Materi ini disusun untuk mengenalkan dasar-dasar logika JavaScript dengan cara yang menyenangkan, bertahap, dan bisa langsung dipraktikkan di browser. Silakan mulai dari latihan pertama dan ikuti alurnya!</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">📁 Struktur Folder</div>
+        <div class="accordion-body">
+          <pre>
+logikajs/
+├── index.html        → Halaman utama (ini!)
+├── latihan1.html     → Penjumlahan & String
+├── latihan2.html     → Operasi Matematika
+├── latihan3.html     → Logika Perbandingan
+├── latihan4.html     → Logika Kondisi (Boolean)
+├── latihan5.html     → Mini Quiz Interaktif
+├── latihan6.html     → Simulasi Perbandingan Harga
+├── latihan7.html     → Simulasi Umur Lomba
+├── latihan8.html     → Simulasi Login
+├── latihan9.html     → Game: Angka Acak
+├── latihan10.html     → Kalkulator Mini
+├── latihan11.html     → Timer Interaktif
+├── latihan12.html     → Tebak Angka (Random)
+├── style.css         → Tampilan
+└── assets/           → Gambar
+          </pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>✨ Proyek kolaborasi <strong>DEV-MTC</strong> & <strong>DEV-AI</strong> untuk menghadirkan pembelajaran logika JavaScript yang <em>interaktif, menyenangkan, dan estetik</em>.</p>
+    <p>📌 Powered by <strong>HTML + CSS + JS</strong> | Made with ❤️ in Indonesia</p>
+  </footer>
+
+  <script>
+    const items = document.querySelectorAll('.accordion-item');
+    items.forEach(item => {
+      item.querySelector('.accordion-header').addEventListener('click', () => {
+        item.classList.toggle('active');
+      });
+    });
+
+    function toggleMode() {
+      document.body.classList.toggle('dark');
+      const btn = document.querySelector('.toggle-mode');
+      btn.textContent = document.body.classList.contains('dark') ? '☀️ Light Mode' : '🌙 Dark Mode';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Latihan 5 - Mini Quiz Interaktif</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Tema Otomatis -->
+  <script>
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    } else {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+    }
+  </script>
+
+  <style>
+    :root[data-theme='light'] {
+      --bg-color: #ffffff;
+      --text-color: #222222;
+      --highlight: #f9f9f9;
+    }
+
+    :root[data-theme='dark'] {
+      --bg-color: #121212;
+      --text-color: #f0f0f0;
+      --highlight: #1f1f1f;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 2rem;
+    }
+
+    .card {
+      background-color: var(--highlight);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="radio"] {
+      margin: 0.3rem 0;
+    }
+
+    .top-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .top-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      body {
+        margin: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-buttons">
+    <button onclick="window.location.href='index.html'">⬅️ Kembali ke Index</button>
+    <button onclick="toggleTheme()">🌓 Ganti Tema</button>
+  </div>
+
+  <header>
+    <h1>📝 Latihan 5: Mini Quiz Interaktif</h1>
+    <p>Uji pemahamanmu tentang logika JavaScript!</p>
+  </header>
+
+  <main>
+    <form id="quizForm" class="card">
+      <div>
+        <label>1. Apa hasil dari <code>1 + '2'</code> dalam JavaScript?</label><br>
+        <input type="radio" name="q1" value="a" required> a. 3<br>
+        <input type="radio" name="q1" value="b"> b. 12<br>
+        <input type="radio" name="q1" value="c"> c. Error<br>
+      </div>
+
+      <div>
+        <label>2. Apa arti dari operator <code>===</code>?</label><br>
+        <input type="radio" name="q2" value="a" required> a. Sama nilai<br>
+        <input type="radio" name="q2" value="b"> b. Sama tipe dan nilai<br>
+        <input type="radio" name="q2" value="c"> c. Tidak sama<br>
+      </div>
+
+      <div>
+        <label>3. Apa hasil dari <code>5 > 3 && 2 > 4</code>?</label><br>
+        <input type="radio" name="q3" value="a" required> a. true<br>
+        <input type="radio" name="q3" value="b"> b. false<br>
+        <input type="radio" name="q3" value="c"> c. undefined<br>
+      </div>
+
+      <button type="button" onclick="cekJawaban()">Kirim Jawaban</button>
+      <div id="hasilQuiz"></div>
+    </form>
+  </main>
+
+  <script>
+    function cekJawaban() {
+      const jawaban = {
+        q1: "b",
+        q2: "b",
+        q3: "b"
+      };
+
+      let skor = 0;
+      const form = document.forms["quizForm"];
+      const hasil = document.getElementById("hasilQuiz");
+
+      Object.keys(jawaban).forEach(k => {
+        const radios = form[k];
+        if (!radios) return;
+        for (let i = 0; i < radios.length; i++) {
+          if (radios[i].checked && radios[i].value === jawaban[k]) {
+            skor++;
+            break;
+          }
+        }
+      });
+
+      hasil.innerHTML = `<p>🎉 Skor kamu: <strong>${skor} / ${Object.keys(jawaban).length}</strong></p>`;
+    }
+
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    }
+  </script>
+</body>
+</html>

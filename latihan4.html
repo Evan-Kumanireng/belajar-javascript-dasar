@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Latihan 4 - Logika Boolean & Kondisi</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Tema Otomatis -->
+  <script>
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    } else {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+    }
+  </script>
+
+  <style>
+    :root[data-theme='light'] {
+      --bg-color: #ffffff;
+      --text-color: #222222;
+      --highlight: #f9f9f9;
+    }
+
+    :root[data-theme='dark'] {
+      --bg-color: #121212;
+      --text-color: #f0f0f0;
+      --highlight: #1f1f1f;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 2rem;
+    }
+
+    input[type="number"], input[type="checkbox"] {
+      margin: 0.5rem 0;
+    }
+
+    label {
+      display: block;
+      margin: 0.5rem 0;
+    }
+
+    .card {
+      background-color: var(--highlight);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .top-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .top-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      body {
+        margin: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-buttons">
+    <button onclick="window.location.href='index.html'">⬅️ Kembali ke Index</button>
+    <button onclick="toggleTheme()">🌓 Ganti Tema</button>
+  </div>
+
+  <header>
+    <h1>🧠 Latihan 4: Logika Boolean & Kondisi</h1>
+    <p>Belajar menggunakan <code>if</code>, <code>else</code>, <code>&&</code>, <code>||</code>, dan <code>!</code> dalam JavaScript.</p>
+  </header>
+
+  <main>
+    <div class="card">
+      <label>Masukkan umur Anda:
+        <input type="number" id="umur" />
+      </label>
+      <label>
+        <input type="checkbox" id="izin" /> Saya sudah mendapat izin orang tua
+      </label>
+      <button onclick="cekIzin()">Cek Kelayakan</button>
+      <div id="hasil"></div>
+    </div>
+
+    <div class="penjelasan">
+      <h2>📘 Penjelasan:</h2>
+      <ul>
+        <li><code>if</code> = jika kondisi terpenuhi</li>
+        <li><code>else</code> = jika tidak terpenuhi</li>
+        <li><code>&&</code> = dan</li>
+        <li><code>||</code> = atau</li>
+        <li><code>!</code> = tidak</li>
+      </ul>
+    </div>
+  </main>
+
+  <script>
+    function cekIzin() {
+      const umur = parseInt(document.getElementById("umur").value);
+      const izin = document.getElementById("izin").checked;
+      const hasil = document.getElementById("hasil");
+
+      let output = "";
+      if (umur >= 17 || (umur >= 13 && izin)) {
+        output = "✅ Kamu boleh mengikuti kegiatan ini.";
+      } else {
+        output = "⛔ Maaf, kamu belum memenuhi syarat.";
+      }
+
+      hasil.innerHTML = `<p><strong>${output}</strong></p>`;
+    }
+
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    }
+  </script>
+</body>
+</html>

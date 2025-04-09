@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan 3 - Logika Perbandingan</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Script tema -->
+  <script>
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    } else {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+    }
+  </script>
+
+  <style>
+    :root[data-theme='light'] {
+      --bg-color: #ffffff;
+      --text-color: #222222;
+      --highlight: #f9f9f9;
+    }
+
+    :root[data-theme='dark'] {
+      --bg-color: #121212;
+      --text-color: #f0f0f0;
+      --highlight: #1f1f1f;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+    }
+
+    h1, h2 {
+      color: var(--text-color);
+    }
+
+    input[type="number"] {
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .card {
+      background-color: var(--highlight);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+
+    .penjelasan ul {
+      padding-left: 1.2rem;
+    }
+
+    .top-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    footer {
+      margin-top: 2rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        margin: 1rem;
+      }
+
+      .top-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-buttons">
+    <button onclick="window.location.href='index.html'">⬅️ Kembali ke Index</button>
+    <button onclick="toggleTheme()">🌓 Ganti Tema</button>
+  </div>
+
+  <header>
+    <h1>🔍 Latihan 3: Logika Perbandingan</h1>
+    <p>Belajar penggunaan operator seperti ==, ===, !=, >, <, >=, <= dalam JavaScript.</p>
+  </header>
+
+  <main>
+    <div class="card">
+      <label>Masukkan nilai A: <input type="number" id="nilaiA"></label><br>
+      <label>Masukkan nilai B: <input type="number" id="nilaiB"></label><br>
+      <button onclick="bandingkan()">Bandingkan!</button>
+
+      <div id="hasil"></div>
+    </div>
+
+    <div class="penjelasan">
+      <h2>🧠 Penjelasan:</h2>
+      <ul>
+        <li><code>==</code> membandingkan nilai, tidak peduli tipe data</li>
+        <li><code>===</code> membandingkan nilai dan tipe data</li>
+        <li><code>!=</code> tidak sama dengan</li>
+        <li><code>&gt;</code> lebih besar dari</li>
+        <li><code>&lt;</code> lebih kecil dari</li>
+        <li><code>&gt;=</code> lebih besar atau sama dengan</li>
+        <li><code>&lt;=</code> lebih kecil atau sama dengan</li>
+      </ul>
+    </div>
+  </main>
+
+  <script>
+    function bandingkan() {
+      const a = document.getElementById("nilaiA").value;
+      const b = document.getElementById("nilaiB").value;
+      const hasil = document.getElementById("hasil");
+
+      let output = `<p><strong>Hasil Perbandingan:</strong></p>`;
+      output += `<p>A == B: ${a == b}</p>`;
+      output += `<p>A === B: ${a === b}</p>`;
+      output += `<p>A != B: ${a != b}</p>`;
+      output += `<p>A > B: ${a > b}</p>`;
+      output += `<p>A < B: ${a < b}</p>`;
+      output += `<p>A >= B: ${a >= b}</p>`;
+      output += `<p>A <= B: ${a <= b}</p>`;
+
+      hasil.innerHTML = output;
+    }
+
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Latihan 7 - Cek Umur Lomba</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      transition: background 0.3s, color 0.3s;
+    }
+    .dark-mode {
+      background-color: #1e1e1e;
+      color: #f1f1f1;
+    }
+    .dark-mode input {
+      background-color: #333;
+      color: white;
+      border: 1px solid #555;
+    }
+    .card {
+      padding: 1.5em;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: background 0.3s, color 0.3s;
+    }
+    .dark-mode .card {
+      background: #2c2c2c;
+    }
+    .hasil-positif { color: green; }
+    .hasil-negatif { color: red; }
+    .hasil-error { color: orange; }
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1em;
+    }
+    button, a.button {
+      padding: 0.5em 1em;
+      font-size: 1em;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    button:hover, a.button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="toolbar">
+      <a href="index.html" class="button">⬅️ Kembali ke Index</a>
+      <button onclick="gantiTema()">🌓 Ganti Tema</button>
+    </div>
+    <h1>🎯 Latihan 7: Cek Umur untuk Ikut Lomba</h1>
+    <p>Masukkan umurmu dan cek apakah kamu boleh ikut lomba!</p>
+  </header>
+
+  <main>
+    <div class="card">
+      <label for="umur">Masukkan Umur:</label><br />
+      <input type="number" id="umur" placeholder="cth: 15" /><br /><br />
+
+      <button onclick="cekUmur()">Cek Kelayakan</button>
+      <div id="hasilUmur" style="margin-top: 1em;"></div>
+    </div>
+  </main>
+
+  <footer style="margin-top: 2em; text-align: center;">
+    <small>&copy; 2025 - Latihan Interaktif JavaScript</small>
+  </footer>
+
+  <script>
+    const umurInput = document.getElementById("umur");
+    const hasil = document.getElementById("hasilUmur");
+
+    umurInput.addEventListener("input", () => hasil.innerHTML = "");
+
+    function cekUmur() {
+      const umur = parseInt(umurInput.value);
+
+      if (isNaN(umur) || umurInput.value.trim() === "") {
+        hasil.innerHTML = `<p class="hasil-error">❗ Harap masukkan umur yang valid.</p>`;
+        return;
+      }
+
+      if (umur < 0) {
+        hasil.innerHTML = `<p class="hasil-error">❗ Umur tidak boleh negatif.</p>`;
+      } else if (umur >= 12 && umur <= 17) {
+        hasil.innerHTML = `<p class="hasil-positif">✅ Umur kamu ${umur} tahun — BOLEH ikut lomba remaja!</p>`;
+      } else if (umur < 12) {
+        hasil.innerHTML = `<p class="hasil-negatif">🚫 Umur kamu ${umur} tahun — Terlalu muda untuk lomba remaja.</p>`;
+      } else {
+        hasil.innerHTML = `<p class="hasil-negatif">🚫 Umur kamu ${umur} tahun — Terlalu tua untuk lomba remaja.</p>`;
+      }
+    }
+
+    function gantiTema() {
+      document.body.classList.toggle("dark-mode");
+      const isDark = document.body.classList.contains("dark-mode");
+      localStorage.setItem("tema", isDark ? "dark" : "light");
+    }
+
+    window.onload = () => {
+      const tema = localStorage.getItem("tema");
+      if (tema === "dark") {
+        document.body.classList.add("dark-mode");
+      }
+    }
+  </script>
+</body>
+</html>

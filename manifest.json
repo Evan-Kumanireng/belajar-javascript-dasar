@@ -1,10 +1,13 @@
 {
   "name": "Belajar JavaScript Dasar",
   "short_name": "JS Dasar",
-  "start_url": "index.html",
+  "id": "/belajar-javascript-dasar/",
+  "start_url": "/belajar-javascript-dasar/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#007acc",
+  "description": "Aplikasi belajar dasar JavaScript untuk pemula.",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "assets/icon-192.png",
@@ -15,6 +18,13 @@
       "src": "assets/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/screenshot1.png",
+      "type": "image/png",
+      "sizes": "540x720"
     }
   ]
 }
